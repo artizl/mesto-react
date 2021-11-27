@@ -1,0 +1,6 @@
+.card__info {
+  width: 282px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+}

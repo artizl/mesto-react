@@ -1,0 +1,6 @@
+.popup-viewing__image {
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: cover;
+  display: block;
+}
