@@ -10,18 +10,24 @@ const Main = ({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) => {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    api.getUserInfo().then((data) => {
-      setUSerName(data.name)
-      setUserDescription(data.about)
-      setUserAvatar(data.avatar)
-    })
-  })
+    api
+      .getUserInfo()
+      .then((data) => {
+        setUSerName(data.name)
+        setUserDescription(data.about)
+        setUserAvatar(data.avatar)
+      })
+      .catch(err => console.log(`Ошибка загрузки данных профиля: ${err}`))
+  }, [])
 
   useEffect(() => {
-    api.getCardList().then((data) => {
-      setCards(data)
-    })
-  }, [] )
+    api
+      .getCardList()
+      .then((data) => {
+        setCards(data)
+      })
+      .catch(err => console.log(`Ошибка загрузки данных карточек: ${err}`))
+  }, [])
 
   return(
     <main>
@@ -44,6 +50,7 @@ const Main = ({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) => {
           {cards.map(item =>
             <Card
               card={item}
+              key={item._id}
               onCardClick={onCardClick} 
             />
           )}
